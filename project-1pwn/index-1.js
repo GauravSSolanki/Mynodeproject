@@ -2,7 +2,9 @@ const http = require("http");
 const YTdata = require("./YTdata");
 const fs = require("fs");
 
-const path = require("path");
+const app = express();
+app.use(express())
+
 
 // const dirPath = path.join(__dirname, "files");
 // const filePath = `${dirPath}/apple.txt`;
@@ -44,10 +46,10 @@ const path = require("path");
 //   }
 //  http.createServer(DataControl).listen(2100)
 
-http
-  .createServer((req, res) => {
-    res.writeHead(200, { "content-type": "application/json" });
-    res.write(JSON.stringify(YTdata));
-    res.end();
-  })
-  .listen(3500);
+// http
+//   .createServer((req, res) => {
+//     res.writeHead(200, { "content-type": "application/json" });
+//     res.write(JSON.stringify(YTdata));
+//     res.end();
+//   })
+//   .listen(3500);
