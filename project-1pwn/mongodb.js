@@ -7,7 +7,7 @@ const client = new MongoClient(url);
 const dbconnect = async () => {
   let data1 = await client.connect();
   let data2 = data1.db(database);
-  let data3 = data2.collection("users");
+  let data3 = data2.collection("Myuser");
   return data3;
 };
 

@@ -4,6 +4,30 @@ const fs = require("fs");
 
 const path = require("path");
 
+// const dirPath = path.join(__dirname, "files");
+// const filePath = `${dirPath}/apple.txt`;
+
+// fs.writeFileSync(filePath, "this is my apple file");
+
+// fs.readFile(filePath,'utf8',(err, item) => {
+//   console.log(item);
+// });
+
+// fs.appendFileSync(filePath,"is And file name is apple.txt yes",(error)=>{
+//    if(!error) 
+//    {console.log("File is updated")}
+// });
+
+// fs.rename(filePath,`${dirPath}/fruit.txt`,(err)=>{
+//   if(!err)
+//   {
+//     console.log("file is Renamed")
+//   }
+// })
+
+// fs.unlinkSync(`${dirPath}/fruit.txt`)
+
+
 // const input = process.argv;
 
 // if (input[2] == "add") {

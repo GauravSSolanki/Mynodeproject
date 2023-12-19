@@ -39,4 +39,16 @@ const insertData=async ()=>{
   console.log(myData2)
  }
  
- insertData();
+//  insertData();
+
+
+ const Update = async () => {
+  const myData1 = await dbconnect();
+  const MyData2 = await myData1.updateOne(
+    { Name: "xyz" },
+    { $set: { Name: "abcxyz", email: "Solanki@gaurav",password:"vhgggfgh" } }
+  );
+  console.log(MyData2);
+}
+
+// Update()
