@@ -1,12 +1,12 @@
-const express = require("express")
-const app = express()
-const cors = require("cors")
-const PORT = 3100
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const PORT = 3100;
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
-const dbconnect = require("./mongodb")
+const dbconnect = require("./mongodb");
 dbconnect();
 
 app.get("/get", async (req, res) => {
@@ -26,23 +26,32 @@ app.post("/adduserstatic", async (req, res) => {
   res.send(Data2);
 });
 
+app.delete("/remove", async (req, res) => {
+  let Data1 = await dbconnect();
+  let Data2 = await Data1.deleteOne({ Name: "VijayraJ Hada" });
+  res.send(Data2);
+});
+
+app.put("/update", async (req, res) => {
+  let Data1 = await dbconnect();
+  let Data2 = await Data1.updateOne(
+    { Name: "Gaurav" },
+    { $set: { Name: "abcxyz", email: "Solanki@gaurav", password: "vhgggfgh" } }
+  );
+  res.send(Data2);
+});
+
 app.post("/adduserdynamic", async (req, res) => {
   let Data1 = await dbconnect();
   let Data2 = await Data1.insertOne(req.body);
   res.send(Data2);
 });
 
-app.delete("/remove", async (req, res) => {
-  let Data1 = await dbconnect();
-  let Data2 = await Data1.deleteOne({ Name: "VijayraJ Hada" })
-  res.send(Data2);
-})
-
-app.put("/update", async (req, res) => {
+app.put("/chnagedynamic", async (req, res) => {
   let Data1 = await dbconnect();
   let Data2 = await Data1.updateOne(
-    { Name: "Gaurav" },
-    { $set: { Name: "abcxyz", email: "Solanki@gaurav",password:"vhgggfgh" } }
+    { Name: req.body.Name },
+    { $set: req.body }
   )
   res.send(Data2);
 })
@@ -89,5 +98,3 @@ app.listen(PORT, (err) => {
     console.log("server is listning on http://localhost:" + PORT);
   }
 });
-
-
