@@ -1,23 +1,16 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
+const cors = require("cors")
+const route = express.Router()
 
-const PORT = 3100;
-// app.use(express.json());
+const PORT = 3100
+app.use(express.json())
 
-function Mymiddleware(req, res, next) {
-  if (req.query.age >= 18) {
-    res.send("this my websikte");
-  } else if (req.query.age < 18) {
-    res.send("Adult only");
-  } else {
-   next();
-  }
-}
+const Mymiddleware=require('./middleware')
 
 // http://localhost:3100/?age=21 use this type url
 
-app.use(Mymiddleware);
+// app.use(Mymiddleware);
 
 app.get("/", (req, res) => {
   res.send("plEAse enter");
@@ -25,7 +18,7 @@ app.get("/", (req, res) => {
 
 // http://localhost:3100/first/?age=22
 
-app.get('/first',(req,res)=>{
+app.get('/first',Mymiddleware,(req,res)=>{ 
     res.send("this my first api solution")
 })
 
