@@ -1,4 +1,6 @@
 const express = require("express");
+
+const mongodb =require('mongodb')
 const app = express();
 const cors = require("cors");
 const PORT = 3100;
@@ -52,8 +54,38 @@ app.put("/chnagedynamic", async (req, res) => {
   let Data2 = await Data1.updateOne(
     { Name: req.body.Name },
     { $set: req.body }
-  )
+  );
   res.send(Data2);
+});
+
+app.put("/:id", async (req, res) => {
+  let Data1 = await dbconnect();
+  let Data2 = await Data1.updateOne(
+    { _id : new mongodb.ObjectId(req.params.id) },
+    { $set: req.body }
+  );
+  res.send(Data2);
+});
+
+app.put("/:_id", async (req, res) => {
+  let Data1 = await dbconnect();
+  let Data2 = await Data1.updateOne(
+    { Name : req.params._id },
+    { $set: req.body }
+  );
+  res.send(Data2);
+});
+
+app.delete("/:id", async (req, res) => {
+  let Data1 = await dbconnect();
+  let Data2 = await Data1.deleteOne({ _id : new mongodb.ObjectId(req.params.id) })
+  res.send(Data2)
+});
+
+app.delete("/:Name", async (req, res) => {
+    let Data1 = await dbconnect();
+    let Data2 = await Data1.deleteOne(req.params)
+    res.send(Data2)
 })
 
 // let user = [];
