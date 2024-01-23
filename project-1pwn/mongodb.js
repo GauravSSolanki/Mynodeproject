@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 const url =
-  "mongodb://127.0.0.1:27017/mongo-ref?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.6";
+  "mongodb://127.0.0.1:27017/mongo-ref?";
 const database = "groot-node";
 const client = new MongoClient(url);
 

@@ -1,42 +1,3 @@
-// const product = require("./product");
-// const express = require("express");
-// const PORT = 3200;
-
-// const app = express();
-// app.use(express.json());
-
-// const { MongoClient } = require("mongodb");
-// const url =
-//   "mongodb://127.0.0.1:27017/mongo-ref";
-// const database = "project";
-// const client = new MongoClient(url);
-
-// const dbconnect = async () => {
-//   let data1 = await client.connect();
-//   let data2 = data1.db(database);
-//   let data3 = data2.collection("Mainproducts");
-//   return data2;
-// };
-
-// // module.exports =  dbconnect
-// dbconnect();
-
-// app.post("/create", async (req, res) => {
-// dbcoonect();
-//   let data = new product(req.body);
-//   let result = await data.save();
-//   console.log(result);
-//   res.send(data);
-// });
-
-// app.listen(PORT, (err) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("server is listning on http://localhost:" + PORT);
-//   }
-// });
-
 
 const product = require("./product");
 const express = require("express");
@@ -64,7 +25,9 @@ const dbConnect = async () => {
   }
 };
 
-// Start the MongoDB connection
+// Start the MongoDB connection 
+// connecting mongodb then post ing a Data
+
 const mainProductsCollection = dbConnect();
 
 app.post("/create", async (req, res) => {
